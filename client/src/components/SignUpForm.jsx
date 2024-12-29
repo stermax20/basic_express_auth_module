@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import styles from './SignUpForm.module.css';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState('');
@@ -25,37 +26,45 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div>
-        <label>아이디:</label>
+      <h1 className={styles.h1}>회원가입</h1>
+        <label className={styles.label}>아이디:</label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          className={styles.input}
         />
       </div>
       <div>
-        <label>비밀번호:</label>
+        <label className={styles.label}>비밀번호:</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className={styles.input}
         />
       </div>
       <div>
-        <label>비밀번호 확인:</label>
+        <label className={styles.label}>비밀번호 확인:</label>
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          className={styles.input}
         />
       </div>
-      <button type="submit">회원가입</button>
+      <button type="submit" className={styles.button}>
+        회원가입
+      </button>
       <div>
-        <Link to="/signin">이미 계정이 있으신가요?</Link>
+        <Link to="/signin" className={styles.link}>
+          이미 계정이 있으신가요?
+        </Link>
       </div>
     </form>
   );
