@@ -62,16 +62,4 @@ const refresh = async (req, res) => {
   }
 };
 
-const logout = async (req, res) => {
-  const refreshToken = req.headers['authorization']?.split(' ')[1];
-  if (!refreshToken) return res.status(401).json({ error: 'Refresh token required' });
-
-  try {
-    await deleteRefreshToken(refreshToken);
-    res.json({ message: 'Logged out successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Error logging out' });
-  }
-};
-
-module.exports = { register, login, refresh, logout };
+module.exports = { register, login, refresh };
